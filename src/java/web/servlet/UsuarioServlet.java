@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Dario
+ * @author Dario - 3:26  GMT20220526-232207_Recording_1920x1080 || 2:15
  */
 @WebServlet(name = "UsuarioServlet", urlPatterns = {"/Usuario"})
 public class UsuarioServlet extends HttpServlet {
@@ -37,7 +37,7 @@ public class UsuarioServlet extends HttpServlet {
                 String pass = request.getParameter("clave");
                 usuario = dao.login(user, pass);
                 result = dao.getMessage();
-                target = result == null ? "Mascota?accion=SEL" : "mascotaUpd.jsp";
+                target = result == null ? "dashboard.jsp" : "login.jsp";
                 break;
             case "":
                 result = "Solicitud requerida";
