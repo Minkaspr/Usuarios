@@ -5,21 +5,22 @@ import entidad.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import util.ConexionBD;
 
 /**
  *
  * @author Dario
  */
-public class DaoUsuarioImpl implements DaoUsuario{
-    
+public class DaoUsuarioImpl implements DaoUsuario {
+
     private final ConexionBD conexion;
     private String mensaje;
 
     public DaoUsuarioImpl() {
         this.conexion = new ConexionBD();
     }
-    
+
     @Override
     public Usuario login(String user, String pass) {
         Usuario usuario = new Usuario();
@@ -66,8 +67,32 @@ public class DaoUsuarioImpl implements DaoUsuario{
     }
 
     @Override
+    public String register(Usuario usuario) {
+        StringBuilder query = new StringBuilder();
+        query.append("INSERT INTO usuario ")
+                .append("(nombres, paterno, materno, usuario, clave) ")
+                .append("VALUES (?, ?, ?, ?, AES_ENCRYPT(?, ?))");
+        try (Connection cn = conexion.conexionBD()) {
+            PreparedStatement ps = cn.prepareStatement(query.toString());
+            ps.setString(1, usuario.getNombres());
+            ps.setString(2, usuario.getPaterno());
+            ps.setString(3, usuario.getMaterno());
+            ps.setString(4, usuario.getUsuario());
+            ps.setString(5, usuario.getClave());
+            ps.setString(6, usuario.getClave());
+            int ctos = ps.executeUpdate();
+            if (ctos == 0) {
+                mensaje = "Cero filas insertadas";
+            }
+        } catch (SQLException e) {
+            mensaje = e.getMessage();
+        }
+        return mensaje;
+    }
+
+    @Override
     public String getMessage() {
         return mensaje;
     }
-    
+
 }

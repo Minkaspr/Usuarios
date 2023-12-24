@@ -1,3 +1,17 @@
-<%-- any content can be specified here e.g.: --%>
+
 <%@ page pageEncoding="UTF-8" %>
-<h2>Hello World!</h2>
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+        <i class="bi bi-bootstrap me-2" width="40" height="32" role="img"></i>
+    </a>
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="index.html" class="nav-link px-2 link-secondary">Inicio</a></li>
+        <li><a href="#" class="nav-link px-2 link-dark">Usuarios</a></li>
+    </ul>
+
+    <div class="col-md-3 text-end">
+        <a href="register.jsp" class="btn btn-outline-primary me-2">Registrarse</a>
+        <a href="login.jsp" class="btn btn-primary">Iniciar Sesion</a>
+    </div>
+</header>

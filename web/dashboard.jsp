@@ -53,7 +53,7 @@
                     <li><a class="dropdown-item" href="#">Ajustes</a></li>
                     <li><a class="dropdown-item" href="#">Perfil</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Salir</a></li>
+                    <li><a class="dropdown-item" href="index.html">Salir</a></li>
                 </ul>
             </div>
         </div>

@@ -1,4 +1,4 @@
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -10,21 +10,8 @@
     </head>
     <body>
         <div class="container">
-            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-                <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-                    <i class="bi bi-bootstrap me-2" width="40" height="32" role="img"></i>
-                </a>
 
-                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="index.html" class="nav-link px-2 link-secondary">Inicio</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark">Usuarios</a></li>
-                </ul>
-
-                <div class="col-md-3 text-end">
-                    <a href="register.jsp" class="btn btn-outline-primary me-2">Registrarse</a>
-                    <a href="login.jsp" class="btn btn-primary">Iniciar Sesion</a>
-                </div>
-            </header>
+            <%@include file="WEB-INF/jspf/header.jspf" %>
 
             <main class="vh-100">
                 <div class="card">
@@ -32,23 +19,36 @@
                         Iniciar Sesion
                     </div>
                     <div class="card-body">
-                        <div class="mb-3 row d-flex flex-column">
-                            <label for="staticUser" class="col-sm col-form-label">Usuario</label>
-                            <div class="col-sm">
-                                <input type="text" class="form-control" id="staticUser">
+                        <form action="Usuario" method="post">
+                            <input type="hidden" name="accion" value="LOGIN"/>
+                            <div class="mb-3 row d-flex flex-column">
+                                <label for="staticUser" class="col-sm col-form-label">Usuario</label>
+                                <div class="col-sm">
+                                    <input type="text" class="form-control" id="staticUser" name="usuario">
+                                </div>
                             </div>
-                        </div>
-                        <div class="mb-3 row d-flex flex-column">
-                            <label for="inputPassword" class="col-sm col-form-label">Contraseña</label>
-                            <div class="col-sm">
-                                <input type="password" class="form-control" id="inputPassword">
+                            <div class="mb-3 row d-flex flex-column">
+                                <label for="inputPassword" class="col-sm col-form-label">Contraseña</label>
+                                <div class="col-sm">
+                                    <input type="password" class="form-control" id="inputPassword" name="clave">
+                                </div>
                             </div>
-                        </div>
-                        <div class="mb-3 row d-flex justify-content-center">
-                            <div class="col-auto">
-                                <button type="submit" class="btn btn-primary mb-3">Ingresar</button>
+                            <div class="mb-3 row d-flex justify-content-center">
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary mb-3">Ingresar</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
+                        <c:if test="${message != null}">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-header">
+                                    Error
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    ${message}
+                                </ul>
+                            </div>
+                        </c:if>
                     </div>
                 </div>
             </main>

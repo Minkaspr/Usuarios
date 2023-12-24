@@ -8,5 +8,6 @@ import entidad.Usuario;
  */
 public interface DaoUsuario {
     Usuario login (String user, String pass);
+    String register(Usuario usuario);
     String getMessage();
 }
